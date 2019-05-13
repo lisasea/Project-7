@@ -1,3 +1,8 @@
+/ created a flickr acct
+/ get an API key from flickr put key in config.js
+/ created config.js file in src folder and import to app.js
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
