@@ -9,8 +9,11 @@ import apiKey from './config.js';
 
 // App components
 import Gallery from './components/Gallery';
-import Gallery from './components/Gallery';
-import Gallery from './components/Gallery';
+import GalleryItem from './components/GalleryItem';
+import Header from './components/Header';
+import Home from './components/Home';
+import NotFound from './components/NotFound';
+import Search from './components/Search';
 
 class App extends Component {
     return (
@@ -37,7 +40,12 @@ render () {
   return (
     <BrowserRouter>
       <div className="container">
-        <Route path="/" component={} />
+        <Header />
+        <Route exact path="/" component={Home} />
+        <Route exact path="/sunrise" render={ () => <Sunrise title='Sunrise' />} />
+        <Route exact path="/plants" render={ () => <Plants title='Plants' /> } />
+        <Route exact path="/architecture" render={ () => <Architecture title='Architecture' /> } />
+        <Route component={NotFound} />
       </div>
     </BrowserRouter>
 )};
