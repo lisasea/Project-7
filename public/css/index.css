@@ -1,7 +1,11 @@
 body {
   text-align: center;
   font-family: 'Open Sans', sans-serif;
-  color: #3f4850;
+  color: #0e1820;
+}
+
+h1 {
+  font-size: 3em;
 }
 
 h2 {

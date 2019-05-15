@@ -15,6 +15,7 @@ import Home from './components/Home';
 import NotFound from './components/NotFound';
 import Search from './components/Search';
 
+// const App = () => ();
 class App extends Component {
     return (
       <div className="App">
