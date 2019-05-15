@@ -1,5 +1,21 @@
 import React, { component } from 'react';
 
+render() {
+    return(
+        <form className="search-form" onSubmit={this.handleSubmit}>
+            <input
+                type="search" 
+                name="search" 
+                placeholder="Search" 
+                ref={ (input) => this.search = input }
+                required   
+            />
+            <button type="submit" className="search-button">
+            
+            </button>
+        </form>
+    )
+}
 
 /*<form class="search-form">
 <input type="search" name="search" placeholder="Search" required/>
