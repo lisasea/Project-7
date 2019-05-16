@@ -4,7 +4,8 @@ const GalleryItem = props => (  //display each list item and image.
     <li className="gif-wrap">
         <img 
             src={props.url}
-            alt={props.title} />
+            alt={props.title} 
+        />
     </li>
 );
 

@@ -20,7 +20,7 @@ const Gallery = props => { // display the sets of images for each of the three t
     return (
         <div className="photo-container">
             <h2>{(props.loading) ? "Loading..." : ""}</h2>
-            <h1>{`${props.topic} gifs`}</h1>
+            <h1>{`${props.topic}`}</h1>
                 <ul>{images}</ul>
         </div>
     );

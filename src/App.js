@@ -15,8 +15,10 @@ import Home from './components/Home';
 import NotFound from './components/NotFound';
 import Search from './components/Search';
 
-// const App = () => ();
+// const App = () => (); ??
 class App extends Component {
+
+
     return (
       <div className="App">
         <header className="App-header">
@@ -41,7 +43,6 @@ render () {
   return (
     <BrowserRouter>
       <div className="container">
-        <Header />
         <Route exact path="/" component={Home} />
         <Route exact path="/sunrise" render={ () => <Sunrise title='Sunrise' />} />
         <Route exact path="/plants" render={ () => <Plants title='Plants' /> } />
@@ -51,6 +52,17 @@ render () {
     </BrowserRouter>
 )};
 
+/*
+Requesting the data
+Fetch the data from the Flickr API using the Fetch API or a tool like Axios.
+Make sure data fetching and state is managed by a higher-level “container” component, like src/App.js.
+It is recommended the you use the following link for help with this part of the project, https://www.flickr.com/services/api/explore/flickr.photos.search.
+Enter a tag to search for, such as “sunsets.”
+You should also limit the number of results to 24 using the per_page argument.
+Choose JSON as the output, then “Do not sign call.”
+Click “Call Method...” At the bottom of the page, and you’ll see an example of the API call you’ll need to make. You can click on the URL to see what the response will look like.
+
+*/
 
 
 export default App;

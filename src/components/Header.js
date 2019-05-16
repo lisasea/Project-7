@@ -6,8 +6,8 @@ import Nav from './Nav';
 const Header = (props) => {
     return(
         <div>
-            <h1>React Photo</h1> 
-            <nav reset={props.reset} />
+            <h1>React Gallery</h1> 
+            <Nav reset={props.reset} />
         </div>
     )
 };
