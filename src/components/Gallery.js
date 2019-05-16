@@ -6,8 +6,8 @@ const Gallery = props => { // display the sets of images for each of the three t
     const results = props.data;
     let images;
 
-    If (results.length > 0) {
-        images = results.map( image => (
+    if (results.length > 0) {
+        images = results.map(image => (
             <GalleryItem
                 url={`https://farm${image.farm}}.staticflickr.com/${image.server}/${image.id}_${image.secret}.jpg`}
                 key={image.id}
@@ -20,7 +20,7 @@ const Gallery = props => { // display the sets of images for each of the three t
     return (
         <div className="photo-container">
             <h2>{(props.loading) ? "Loading..." : ""}</h2>
-            <h1>{`${props.topic}`}</h1>
+            <h1>{`${props.query}`}</h1>
                 <ul>{images}</ul>
         </div>
     );

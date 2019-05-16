@@ -5,15 +5,16 @@ import {
   BrowserRouter,
   Route
 } from 'react-router-dom';
-import logo from './logo.svg';
+//import logo from './logo.svg';
 import apiKey from './config.js';
 
 // App components
 import Gallery from './components/Gallery';
-import GalleryItem from './components/GalleryItem';
 import Header from './components/Header';
 import Home from './components/Home';
+//import Nav from './components/Nav';
 import NotFound from './components/NotFound';
+//import NoResults from './components/NoResults';
 import Search from './components/Search';
 
 // const App = () => (); ??
@@ -28,23 +29,32 @@ export default class App extends Component {
       architecture: [],
       loading: true
     };
-  };
-
-  componentDidMount() { 
-
   }
 
-  performSearch = (query) => { //fetch data
+  componentDidMount() { 
+    this.performSearch("");
+    this.performSearch("sunrise");
+    this.performSearch("plants");
+    this.performSearch("architecture");
+  }
+
+  performSearch = (query = "plants") => { //fetch data
     axios.get(`https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${query}&per_page=24&format=json&nojsoncallback=1`)
       .then(response => {
-        this.setState({
-          images: response.data.data,
-          loading: false
-        });
+          if (query === "sunrise") {
+                this.setState({ sunrise: response.data.data, loading: false});
+          } else if (query === "plants") {
+                this.setState({ plants: response.data.data, loading: false});
+          } else if (query === "architecture") {
+                this.setState({ architecture: response.data.data, loading: false});
+          } else {
+                this.setState({
+                  images: response.data.data,
+                  loading: false
+                });
+          }
       })
-      .catch(error => {
-        console.log('Error getting data', error);
-      });
+      .catch(error => console.log('Error getting data', error));
   }
 
 render () { //add browser router and routes
@@ -54,11 +64,19 @@ render () { //add browser router and routes
         <div className="container">
           <Header />
           <Search onSearch={this.performSearch} /> 
+          <Nav /> 
           <Route exact path="/" component={Home} />
           <Route exact path="/sunrise" render={ () => <Sunrise title='Sunrise' />} />
           <Route exact path="/plants" render={ () => <Plants title='Plants' /> } />
           <Route exact path="/architecture" render={ () => <Architecture title='Architecture' /> } />
           <Route component={NotFound} />
+          <Gallery data={this.state.images} />
+
+          {
+            (this.state.loading)
+            ? <p>Loading...</p>
+            : <Gallery data={this.state.images}/>
+          }
         </div>
       </BrowserRouter>
     );
