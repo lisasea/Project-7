@@ -3,7 +3,7 @@ import GalleryItem from './GalleryItem';
 import NoResults from './NoResults';
 
 const Gallery = props => { // display the sets of images for each of the three topic categories
-    let results = props.data;
+    const results = props.data;
     let images;
 
     If (results.length > 0) {
@@ -24,7 +24,6 @@ const Gallery = props => { // display the sets of images for each of the three t
                 <ul>{images}</ul>
         </div>
     );
-};
-
+}
 
 export default Gallery;

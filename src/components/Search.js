@@ -2,14 +2,18 @@ import React, { component } from 'react';
 import { withRouter } from 'react-router-dom';
 
 class Search extends Component { //"Search" link that includes a search field to let users search for photos.
-    render() {
+    state = {
+        
+    }
+
+render() {
         return(
             <form className="search-form" onSubmit={this.handleSubmit}>
                 <input
                     type="search" 
                     name="search" 
-                    placeholder="Search" 
-                    ref={ (input) => this.search = input }
+                    placeholder="Search..." 
+                    ref={ (input) => this.search = input } //or this.query
                     required   
                 />
                 <button type="submit" className="search-button">

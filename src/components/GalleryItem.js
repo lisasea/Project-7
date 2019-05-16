@@ -1,7 +1,7 @@
 import React from "react";
 
 const GalleryItem = props => (  //display each list item and image.
-    <li className="gif-wrap">
+    <li>
         <img 
             src={props.url}
             alt={props.title} 

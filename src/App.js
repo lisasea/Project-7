@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './App.css';
 import axios from 'axios';
 import {
@@ -30,8 +30,12 @@ export default class App extends Component {
     };
   };
 
-  componentDidMount() { //fetch data
-    axios.get(`https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${topic}&per_page=24&format=json&nojsoncallback=1`)
+  componentDidMount() { 
+
+  }
+
+  performSearch = (query) => { //fetch data
+    axios.get(`https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${query}&per_page=24&format=json&nojsoncallback=1`)
       .then(response => {
         this.setState({
           images: response.data.data,
@@ -43,21 +47,22 @@ export default class App extends Component {
       });
   }
 
-
 render () { //add browser router and routes
   console.log(this.state.images); //in console see if 24 objects were fetched from API
-  return (
-    <BrowserRouter>
-      <div className="container">
-        <Header />
-        <Route exact path="/" component={Home} />
-        <Route exact path="/sunrise" render={ () => <Sunrise title='Sunrise' />} />
-        <Route exact path="/plants" render={ () => <Plants title='Plants' /> } />
-        <Route exact path="/architecture" render={ () => <Architecture title='Architecture' /> } />
-        <Route component={NotFound} />
-      </div>
-    </BrowserRouter>
-  );
+    return (
+      <BrowserRouter>
+        <div className="container">
+          <Header />
+          <Search onSearch={this.performSearch} /> 
+          <Route exact path="/" component={Home} />
+          <Route exact path="/sunrise" render={ () => <Sunrise title='Sunrise' />} />
+          <Route exact path="/plants" render={ () => <Plants title='Plants' /> } />
+          <Route exact path="/architecture" render={ () => <Architecture title='Architecture' /> } />
+          <Route component={NotFound} />
+        </div>
+      </BrowserRouter>
+    );
+  }
 }
 
 /*
