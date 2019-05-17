@@ -60,7 +60,7 @@ export default class App extends Component {
 render () { //add browser router and routes
   console.log(this.state.images); //in console see if 24 objects were fetched from API
     return (
-      <BrowserRouter>
+      <BrowserRouter basename="/Project-7">
         <div className="container">
           <Header />
           <Search onSearch={this.performSearch} /> 
@@ -78,7 +78,7 @@ render () { //add browser router and routes
                 ? <p>Loading...</p>
                 : <Gallery data={this.state.images}/>
               }
-              
+
             </Switch>
         </div>
       </BrowserRouter>
