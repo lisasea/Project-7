@@ -64,19 +64,22 @@ render () { //add browser router and routes
         <div className="container">
           <Header />
           <Search onSearch={this.performSearch} /> 
-          <Nav /> 
-          <Route exact path="/" component={Home} />
-          <Route exact path="/sunrise" render={ () => <Sunrise title='Sunrise' />} />
-          <Route exact path="/plants" render={ () => <Plants title='Plants' /> } />
-          <Route exact path="/architecture" render={ () => <Architecture title='Architecture' /> } />
-          <Route component={NotFound} />
-          <Gallery data={this.state.images} />
 
-          {
-            (this.state.loading)
-            ? <p>Loading...</p>
-            : <Gallery data={this.state.images}/>
-          }
+            <Switch>
+              <Route exact path="/" component={Home} />
+              <Route exact path="/sunrise" render={ () => <Sunrise title='Sunrise' />} />
+              <Route exact path="/plants" render={ () => <Plants title='Plants' /> } />
+              <Route exact path="/architecture" render={ () => <Architecture title='Architecture' /> } />
+              <Route component={NotFound} />
+              <Gallery data={this.state.images} />
+
+              {
+                (this.state.loading)
+                ? <p>Loading...</p>
+                : <Gallery data={this.state.images}/>
+              }
+              
+            </Switch>
         </div>
       </BrowserRouter>
     );
