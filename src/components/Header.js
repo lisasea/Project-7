@@ -1,6 +1,5 @@
 import React from 'react';
 import Nav from './Nav';
-// above: import { NavLink } fr...
 
 // alt for below:  <h1>{ props.title }</h1> 
 const Header = (props) => {
@@ -13,15 +12,7 @@ const Header = (props) => {
 };
 
 export default Header;
-//app title
 
-//logo
-
-//footer
-
-//nav
-
-// search bar
 
 
 
