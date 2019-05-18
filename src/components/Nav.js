@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 const Nav = () => (
     <nav className="main-nav">
         <ul>
-            <li><NavLink exact to="/"> activeStyle={{ background: "tomato"}}>Home</NavLink></li>
+            <li><NavLink exact to="/">Home</NavLink></li>
             <li><NavLink to="/sunrise">Sunrise</NavLink></li>
             <li><NavLink to="/plants">Plants</NavLink></li>
             <li><NavLink to="/architecture">Architecture</NavLink></li>

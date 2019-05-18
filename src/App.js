@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
+import './css/index.css';
 import axios from 'axios';
 import {
   BrowserRouter,
@@ -39,15 +39,15 @@ export default class App extends Component {
     this.performSearch("architecture");
   }
 
-  performSearch = (query = "plants") => { //fetch data
+  performSearch = (query) => { //fetch data
     axios.get(`https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${query}&per_page=24&format=json&nojsoncallback=1`)
       .then(response => {
           if (query === "sunrise") {
-                this.setState({ sunrise: response.data.data, loading: false});
+                this.setState({ sunrise: response.data.photos.photo, loading: false});
           } else if (query === "plants") {
-                this.setState({ plants: response.data.data, loading: false});
+                this.setState({ plants: response.data.photos.photo, loading: false});
           } else if (query === "architecture") {
-                this.setState({ architecture: response.data.data, loading: false});
+                this.setState({ architecture: response.data.photos.photo, loading: false});
           } else {
                 this.setState({
                   images: response.data.data,
