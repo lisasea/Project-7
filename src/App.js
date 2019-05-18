@@ -3,7 +3,8 @@ import './App.css';
 import axios from 'axios';
 import {
   BrowserRouter,
-  Route
+  Route,
+  Switch
 } from 'react-router-dom';
 //import logo from './logo.svg';
 import apiKey from './config.js';
@@ -67,9 +68,11 @@ render () { //add browser router and routes
 
             <Switch>
               <Route exact path="/" component={Home} />
-              <Route exact path="/sunrise" render={ () => <Sunrise title='Sunrise' />} />
-              <Route exact path="/plants" render={ () => <Plants title='Plants' /> } />
-              <Route exact path="/architecture" render={ () => <Architecture title='Architecture' /> } />
+    <Route exact path="/sunrise" render={ () => <Gallery title="Sunrise" date="this.state.sunrise" /> } />
+
+
+              <Route exact path="/plants" render={ () => <Gallery title="Plants" data="this.state.plants" /> } />
+              <Route exact path="/architecture" render={ () => <Gallery title="Architecture" data="this.state.architecture" /> } />
               <Route component={NotFound} />
               <Gallery data={this.state.images} />
 
