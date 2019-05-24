@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './css/index.css';
+import './App.css';
 import axios from 'axios';
 import {
   BrowserRouter,
@@ -39,7 +40,7 @@ export default class App extends Component {
     this.performSearch("architecture");
   }
 
-  performSearch = (query) => { //fetch data
+  performSearch = (query =) => { //fetch data -does this need default "sunrise"
     axios.get(`https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${query}&per_page=24&format=json&nojsoncallback=1`)
       .then(response => {
           if (query === "sunrise") {
@@ -55,7 +56,7 @@ export default class App extends Component {
                 });
           }
       })
-      .catch(error => console.log('Error getting data', error));
+      .catch(error => {console.log("Error getting data", error)});
   }
 
 render () { //add browser router and routes
@@ -68,9 +69,7 @@ render () { //add browser router and routes
 
             <Switch>
               <Route exact path="/" component={Home} />
-    <Route exact path="/sunrise" render={ () => <Gallery title="Sunrise" date="this.state.sunrise" /> } />
-
-
+              <Route exact path="/sunrise" render={ () => <Gallery title="Sunrise" date="this.state.sunrise" /> } />
               <Route exact path="/plants" render={ () => <Gallery title="Plants" data="this.state.plants" /> } />
               <Route exact path="/architecture" render={ () => <Gallery title="Architecture" data="this.state.architecture" /> } />
               <Route component={NotFound} />
