@@ -40,7 +40,7 @@ export default class App extends Component {
     this.performSearch("architecture");
   }
 
-  performSearch = (query =) => { //fetch data -does this need default "sunrise"
+  performSearch = (query) => { //fetch data -does this need default "sunrise"
     axios.get(`https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${query}&per_page=24&format=json&nojsoncallback=1`)
       .then(response => {
           if (query === "sunrise") {
@@ -51,7 +51,7 @@ export default class App extends Component {
                 this.setState({ architecture: response.data.photos.photo, loading: false});
           } else {
                 this.setState({
-                  images: response.data.data,
+                  images: response.data.photos.photo,
                   loading: false
                 });
           }
@@ -65,13 +65,11 @@ render () { //add browser router and routes
       <BrowserRouter basename="/Project-7">
         <div className="container">
           <Header />
-          <Search onSearch={this.performSearch} /> 
-
             <Switch>
               <Route exact path="/" component={Home} />
-              <Route exact path="/sunrise" render={ () => <Gallery title="Sunrise" date="this.state.sunrise" /> } />
-              <Route exact path="/plants" render={ () => <Gallery title="Plants" data="this.state.plants" /> } />
-              <Route exact path="/architecture" render={ () => <Gallery title="Architecture" data="this.state.architecture" /> } />
+              <Route exact path="/sunrise" render={ () => <Gallery title="Sunrise" data={this.state.sunrise} /> } />
+              <Route exact path="/plants" render={ () => <Gallery title="Plants" data={this.state.plants} /> } />
+              <Route exact path="/architecture" render={ () => <Gallery title="Architecture" data={this.state.architecture} /> } />
               <Route component={NotFound} />
               <Gallery data={this.state.images} />
 
