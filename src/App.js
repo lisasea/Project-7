@@ -7,19 +7,15 @@ import {
   Route,
   Switch
 } from 'react-router-dom';
-//import logo from './logo.svg';
 import apiKey from './config.js';
 
 // App components
 import Gallery from './components/Gallery';
 import Header from './components/Header';
 import Home from './components/Home';
-//import Nav from './components/Nav';
 import NotFound from './components/NotFound';
-//import NoResults from './components/NoResults';
 import Search from './components/Search';
 
-// const App = () => (); ??
 export default class App extends Component {
 
   constructor() {
@@ -64,6 +60,13 @@ render () { //add browser router and routes
     return (
       <BrowserRouter basename="/Project-7">
         <div className="container">
+        <Route
+          render={props =>
+            <Search {...props}
+              onSearch={this.performSearch}
+            />
+          }
+        />
           <Header />
             <Switch>
               <Route exact path="/" component={Home} />

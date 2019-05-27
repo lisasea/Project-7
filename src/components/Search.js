@@ -1,16 +1,18 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
 
-class Search extends Component { //"Search" link that includes a search field to let users search for photos.
+export default class Search extends Component { //"Search" link that includes a search field to let users search for photos.
     state = {
         searchText: ''    
     }
 
     onSearchChange = e => {
-        this.setState({ searchText: e.target.value});
+        this.setState({ searchText: e.target.value });
     }
 
     handleSubmit = e => {
+        this.props.history.push(
+            `/search/${this.state.searchText}`
+        );
         e.preventDefault();
         this.props.onSearch(this.query.value);
         e.currentTarget.reset();
@@ -24,8 +26,7 @@ class Search extends Component { //"Search" link that includes a search field to
                     onChange={this.onSearchChange}
                     name="search" 
                     ref={(input) => this.query = input } 
-                    placeholder="Search..." 
-                    required   
+                    placeholder="Search..."    
                 />
                 <button type="submit" id="submit" className="search-button">
                     <svg fill="#fff" height="24" viewBox="0 0 23 23" width="24" xmlns="http://www.w3.org/2000/svg">
@@ -37,5 +38,3 @@ class Search extends Component { //"Search" link that includes a search field to
         );
     }
 }
-
-export default withRouter(Search);
