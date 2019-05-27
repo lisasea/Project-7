@@ -60,13 +60,6 @@ render () { //add browser router and routes
     return (
       <BrowserRouter basename="/Project-7">
         <div className="container">
-        <Route
-          render={props =>
-            <Search {...props}
-              onSearch={this.performSearch}
-            />
-          }
-        />
           <Header />
             <Switch>
               <Route exact path="/" component={Home} />
