@@ -36,7 +36,8 @@ export default class App extends Component {
     this.performSearch("architecture");
   }
 
-  performSearch = (query) => { //fetch data -does this need default "sunrise"
+  performSearch = (query = 'sunrise') => { //fetch data -does this need default "sunrise"
+    //this.setState({ loading: true });
     axios.get(`https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${query}&per_page=24&format=json&nojsoncallback=1`)
       .then(response => {
           if (query === "sunrise") {
@@ -48,6 +49,7 @@ export default class App extends Component {
           } else {
                 this.setState({
                   images: response.data.photos.photo,
+                  searchTerm: query,
                   loading: false
                 });
           }
@@ -56,18 +58,17 @@ export default class App extends Component {
   }
 
 render () { //add browser router and routes
-  console.log(this.state.images); //in console see if 24 objects were fetched from API
+  //console.log(this.state.images); //in console see if 24 objects were fetched from API
     return (
       <BrowserRouter basename="/Project-7">
         <div className="container">
           <Header />
             <Switch>
-              <Route exact path="/" component={Home} />
+              <Route exact path="/" render={props => <Home {...props} onSearch={this.performSearch} />} />
               <Route exact path="/sunrise" render={ () => <Gallery title="Sunrise" data={this.state.sunrise} /> } />
               <Route exact path="/plants" render={ () => <Gallery title="Plants" data={this.state.plants} /> } />
               <Route exact path="/architecture" render={ () => <Gallery title="Architecture" data={this.state.architecture} /> } />
               <Route component={NotFound} />
-              <Gallery data={this.state.images} />
 
               {
                 (this.state.loading)
@@ -77,6 +78,7 @@ render () { //add browser router and routes
 
             </Switch>
         </div>
+          <Gallery data={this.state.images} />
       </BrowserRouter>
     );
   }
