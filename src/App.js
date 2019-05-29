@@ -21,6 +21,7 @@ export default class App extends Component {
   constructor() {
     super();
     this.state = {
+      searchTerm: "",
       images: [],
       sunrise: [],
       plants: [],
@@ -65,6 +66,7 @@ render () { //add browser router and routes
           <Header />
             <Switch>
               <Route exact path="/" render={props => <Home {...props} onSearch={this.performSearch} />} />
+              <Route path="/:topic" render={() => <Gallery data={this.state.images} />} />
               <Route exact path="/sunrise" render={ () => <Gallery title="Sunrise" data={this.state.sunrise} /> } />
               <Route exact path="/plants" render={ () => <Gallery title="Plants" data={this.state.plants} /> } />
               <Route exact path="/architecture" render={ () => <Gallery title="Architecture" data={this.state.architecture} /> } />
@@ -78,7 +80,6 @@ render () { //add browser router and routes
 
             </Switch>
         </div>
-          <Gallery data={this.state.images} />
       </BrowserRouter>
     );
   }
