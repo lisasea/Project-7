@@ -1,6 +1,15 @@
-/ created a flickr acct
-/ get an API key from flickr put key in config.js
-/ created config.js file in src folder and import to app.js
+## Setup 
+   1. Download this repo
+   2. Run npm install
+   3. Create Flickr account; apply for a non-commercial API key
+   4. Create a config.js file and save in src folder
+   5. Add the following code to the config.js file:
+   ```javascript
+const apiKey = 'YOUR API KEY';
+export default apiKey;
+`` 6. Run npm start  
+   7. View in your browser at http/localhost:3000
+
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

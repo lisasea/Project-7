@@ -14,7 +14,6 @@ import Gallery from './components/Gallery';
 import Header from './components/Header';
 import Home from './components/Home';
 import NotFound from './components/NotFound';
-import Search from './components/Search';
 
 export default class App extends Component {
 
