@@ -37,7 +37,7 @@ export default class App extends Component {
     this.performSearch("architecture");
   }
 
-  performSearch = (query = 'sunrise') => { //fetch data -does this need default "sunrise"
+  performSearch = (query = 'sunrise') => { //fetch data - default "sunrise"
     this.setState({ loading: true });
     axios.get(`https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${query}&per_page=24&format=json&nojsoncallback=1`)
       .then(response => {
@@ -59,7 +59,6 @@ export default class App extends Component {
   }
 
 render () { //add browser router and routes
-  //console.log(this.state.images); //in console see if 24 objects were fetched from API
     return (
       <BrowserRouter basename="/Project-7">
         <div className="container">
@@ -76,7 +75,6 @@ render () { //add browser router and routes
               <Route exact path="/plants" render={ () => <Gallery title="Plants" data={this.state.plants} /> } />
               <Route exact path="/architecture" render={ () => <Gallery title="Architecture" data={this.state.architecture} /> } />
               <Route component={NotFound} />
-
             </Switch>
             }
         </div>
@@ -86,28 +84,6 @@ render () { //add browser router and routes
 }
 
 /*
-
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
-};
 Requesting the data
 Fetch the data from the Flickr API using the Fetch API or a tool like Axios.
 Make sure data fetching and state is managed by a higher-level “container” component, like src/App.js.

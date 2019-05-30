@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-export default class Search extends Component { //"Search" link that includes a search field to let users search for photos.
+export default class Search extends Component { //"Search" link that includes a search field to let users search for photos
     state = {
         searchText: ''    
     }
