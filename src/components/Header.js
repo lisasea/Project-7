@@ -1,7 +1,7 @@
 import React from 'react';
 import Nav from './Nav';
 
-const Header = (props) => {
+const Header = (props) => { // Header, reset Nav
     return(
         <div>
             <h1>React Gallery</h1> 

@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-const Nav = () => (
+const Nav = () => ( // Navigation tabs 
     <nav className="main-nav">
         <ul>
             <li><NavLink exact to="/">Home</NavLink></li>
