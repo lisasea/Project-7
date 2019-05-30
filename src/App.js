@@ -9,14 +9,13 @@ import {
 } from 'react-router-dom';
 import apiKey from './config.js';
 
-// App components
+// import App components
 import Gallery from './components/Gallery';
 import Header from './components/Header';
 import Home from './components/Home';
 import NotFound from './components/NotFound';
 
-export default class App extends Component {
-
+export default class App extends Component { // create component class, arrays and assign state
   constructor() {
     super();
     this.state = {
@@ -29,14 +28,14 @@ export default class App extends Component {
     };
   }
 
-  componentDidMount() { 
+  componentDidMount() {  // trigger API requests for data when page is rendered
     this.performSearch("");
     this.performSearch("sunrise");
     this.performSearch("plants");
     this.performSearch("architecture");
   }
 
-  performSearch = (query = 'sunrise') => { //fetch data - default "sunrise"
+  performSearch = (query = 'sunrise') => { //fetch data using axios - default "sunrise"
     this.setState({ loading: true });
     axios.get(`https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${query}&per_page=24&format=json&nojsoncallback=1`)
       .then(response => {
